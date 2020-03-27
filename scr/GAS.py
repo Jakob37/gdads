@@ -5,8 +5,8 @@ import argparse
 from pathlib import Path
 
 ################################################################################
-path = str(Path.cwd()) + '/'
-db_file = str(path + 'db/gda.sqlite')
+path = str(Path(__file__).resolve().parent.parent) + '/'
+db_file = str(sorted(Path(path).glob('*/*.sqlite'))[0])
 
 id_table = [
             "id", "entrez_id", "gene_symbol", "string_id",
@@ -47,7 +47,7 @@ parser.add_argument(
                     '-o',
                     dest='outdir',
                     metavar='<output_path>',
-                    help='specify output directory path'
+                    help='specify output directory path; defaults to current'
                     )
 parser.add_argument(
                     '-s',
@@ -65,7 +65,11 @@ con = sqlite3.connect(db_file)
 cur = con.cursor()
 
 if args.get_associations:
-    statement = 'SELECT DISTINCT diseaseName FROM main ORDER BY diseaseName'
+    statement = '''
+SELECT DISTINCT associations
+FROM gene_disease_associations
+ORDER BY associations
+                '''
     cur.execute(statement)
     with open(str(path + 'data/diseases.txt'), 'w') as out_file:
         for disease in cur:
@@ -79,7 +83,9 @@ if args.infile:
                     line.rstrip().split()) for line in open(args.infile, 'r')]
         statement_1 = 'SELECT * FROM id_table WHERE gene_symbol=?'
         statement_2 = '''
-SELECT associations FROM gene_disease_associations WHERE id=?
+SELECT associations
+FROM gene_disease_associations
+WHERE id=?
                       '''
         for gene in genes:
             cur.execute(statement_1, gene)
