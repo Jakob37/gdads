@@ -91,7 +91,9 @@ if args.get_associations:  # If argument [-a] is specified.
             print(disease, sep='n', file=out_file)
 
 if args.infile:  # If argument [-i <input_file>] is specified.
-    #
+    # Check for assiciations for the genes of the requested format
+    # (specified with [-I]; default gene_symbol), and output file to rst/.
+    # Below variable is assigned output path.
     association_file = str(outdir/Path(args.infile).stem) + '_associations.txt'
     hits = []  # Holds all matches.
     misses = []  # Holds IDs not found in the database.
@@ -101,25 +103,34 @@ if args.infile:  # If argument [-i <input_file>] is specified.
                     }  # Non-default identifier.
     # Read in genes from file, and split into list of tuples.
     genes = [tuple(line.rstrip().split()) for line in open(args.infile, 'r')]
+    # Assign statements fed to cursor object.
     statement_1 = 'SELECT * FROM id_table WHERE {}=?'.format(args.identifier)
     statement_2 = 'SELECT associations ' \
                   + 'FROM gene_disease_associations ' \
                   + 'WHERE id=?'
-    if args.go:
+    if args.go:  # Only execute if [-g] is specified.
+        # Adds a GO term output file to rst/, based on input ontology domain.
+        # Below variable is assigned output path.
         go_file = str(outdir/Path(args.infile).stem) + '_{}.txt'.format(args.go)
         statement_3 = 'SELECT go_ids FROM {} WHERE id=?'. format(args.go)
     for gene in genes:
-        # Check
+        # Check for gene input hits, and store in list.
         cur.execute(statement_1, gene)
         hits.append(cur.fetchone())
         if hits[-1] == None:
+            # Store genes not found within the database in list.
             misses.append(str(gene).strip('()').strip("',") + ', ')
     if misses:
+        # Inform user on genes that weren't found in the database.
         print('No associations were found for {}.'.format(
               ''.join(misses).strip(", ")))
     with open(association_file, 'w') as out_association:
+        # Iterate over list of calls made to database, and write hits to
+        # the output file.
         for hit in hits:
-            if hit != None:
+            if hit != None:  # Ignores gene IDs not in the database.
+                # Print the required output to the assigned file, after
+                # making the relevant secondary database check.
                 cur.execute(statement_2, tuple(hit[0].split()))
                 print(hit[format_index[args.identifier]],
                       ''.join(cur.fetchone()).replace('|',
@@ -128,7 +139,8 @@ if args.infile:  # If argument [-i <input_file>] is specified.
                       sep='\t',
                       file=out_association
                       )
-                if args.go:
+                if args.go:  # Only executes if [-g] was specified.
+                    # Writes the requested ontology domain GO terms.
                     cur.execute(statement_3, tuple(hit[0].split()))
                     print(hit[format_index[args.identifier]],
                           ''.join(cur.fetchone()).replace('|',
