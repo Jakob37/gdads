@@ -2,6 +2,8 @@
 
 The central software of gDADs (Gene-Disease Association Database Search-tool) is written in Python script. It seeks to streamline the process of enrichment analysis of a set of genes awarded from a differential expression study.
 
+To reference gDADs see the following [faux article](https://drive.google.com/file/d/1h9a9egXJwgBYxsoI7-k0z4Wg1l8IyS0H/view?usp=sharing).
+
 ## Getting Started
 
 These instructions will get you a copy of the software, and associated files, on your local machine for testing purposes (see section **Running tests**).
