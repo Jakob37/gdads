@@ -4,7 +4,7 @@ The central software of gDADs (Gene-Disease Association Database Search-tool) is
 
 ## Getting Started
 
-These instructions will get you a copy of the software, and associated files, on your local machine for testing purposes (see section **Running a test**).
+These instructions will get you a copy of the software, and associated files, on your local machine for testing purposes (see section **Running tests**).
 
 **Disclaimer:** gDADs was developed on a Linux system (Ubuntu 18.04.4 LTS) and should preferably be run on a Linux distribution of similar architecture. It might work on macOS, but is not compatible with Windows (as of version 1.0).
 
@@ -14,7 +14,7 @@ These instructions will get you a copy of the software, and associated files, on
 
 The command-line executable was written in Python version 3.6.9, and only uses standard modules in the current iteration (version 1.0).
 
-It was intended for [GOATOOLS](https://github.com/tanghaibao/goatools) to be implemented in the software, but this fell outside the scope of the project. Instead, a rudimentary function was added to gDADs version 1.0, tested in subsection **Running a test**.
+It was intended for [GOATOOLS](https://github.com/tanghaibao/goatools) to be implemented in the software, but this fell outside the scope of the project. Instead, a rudimentary function was added to gDADs version 1.0, tested in subsection **Running tests**.
 
 ### Installation
 
@@ -54,9 +54,9 @@ or,
 python3 ~/path/to/scr/gDADs -h
 ```
 
-## Running a test
+## Running tests
 
-Testing can be done by utilizing the files contained within /data/test_in/. These hold example IDs, and should be specified with [-i \<input file\>], potentially using [-I]. The latter is needed to specify ID format, unless it is of default type ("`gene_symbol`").
+Testing can be done by utilizing the files contained within /data/test_in/. These hold example IDs, and should be specified with [-i \<input file\>], potentially using [-I]. The latter is needed to specify ID format, unless it is of default type ("`gene_symbol`"). The attained output files can then be compared to the files found in /data/test_out/.
 
 ### Example 1
 
