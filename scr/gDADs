@@ -8,15 +8,18 @@ import re
 
 
 # PATH & FILE DEFINING ########################################################
-path = Path(__file__).resolve().parent.parent
-db_file = sorted(Path(path).glob('*/*.sqlite'))[0]
+path = Path(__file__).resolve().parent.parent  # Set to script dirs
+                                               # parent dir.
+db_file = sorted(Path(path).glob('*/*.sqlite'))[0]  # Find and assign
+                                                    # database file.
 outdir = Path(path)/"rst"
-outdir.mkdir(parents=True, exist_ok=True)
+outdir.mkdir(parents=True, exist_ok=True)  # If the subdir "rst" does
+                                           # not exit create it.
 
 
 # ARGUMENT PARSER #############################################################
 prog_usage = '''
-Write the description for the program here.
+The gene-disease association database search-tool (gDADs) interacts with the data stored within the gDAD database (DB) associated with the software. The primary function takes a list of genes, compares their IDs to those in the DB, and outputs the associated diseases. Options to see all diseases within the DB, as well as check for genes associated to a specific search term, are also available.
              '''
 parser = argparse.ArgumentParser(description=prog_usage)
 parser.add_argument(
@@ -48,10 +51,19 @@ parser.add_argument(
                     default='gene_symbol'
                     )
 parser.add_argument(
+                    '-g',
+                    dest='go',
+                    metavar='<ontology_domain>',
+                    help='perform enrichment analysis on <input_file> genes ' +
+                         'and output the specified GO ontology terms for any' +
+                         ' hits. Specify with "go_process", "go_functions", ' +
+                         'or "go_compartment")'
+                    )
+parser.add_argument(
                     '-s',
                     dest='search_term',
                     metavar='"term"',
-                    help='Check for disease associations in the database ' +
+                    help='check for disease associations in the database ' +
                          'containing <search_term>, and output associated' +
                          ' genes to <search_term>_associations.tab'
                     )
@@ -59,7 +71,7 @@ args = parser.parse_args()
 
 
 # OPEN DATABASE FOR INTERACTION ###############################################
-con = sqlite3.connect(str(db_file))
+con = sqlite3.connect(str(db_file))  # Connect to the database.
 cur = con.cursor()  # Initialize cursor object.
 
 
@@ -67,7 +79,7 @@ cur = con.cursor()  # Initialize cursor object.
 if args.get_associations:  # If argument [-a] is specified.
     # Prints all associated diseases found within the database.
     diseases = []
-    disease_file = str(outdir) + '/diseases.txt'
+    disease_file = str(outdir) + '/diseases.txt'  # Assign output file.
     statement = 'SELECT associations FROM gene_disease_associations'
     for row in cur.execute(statement).fetchall():
         # Iterate over all items, split them on the predefined delimiter,
@@ -79,19 +91,25 @@ if args.get_associations:  # If argument [-a] is specified.
             print(disease, sep='n', file=out_file)
 
 if args.infile:  # If argument [-i <input_file>] is specified.
+    #
     association_file = str(outdir/Path(args.infile).stem) + '_associations.txt'
-    hits = []
-    misses = []
+    hits = []  # Holds all matches.
+    misses = []  # Holds IDs not found in the database.
     format_index = {
                     "entrez_id":1, "gene_symbol":2, "ensembl_id":3,
                     "uniprot_acc":4, "swissprot_id":5
-                    }
+                    }  # Non-default identifier.
+    # Read in genes from file, and split into list of tuples.
     genes = [tuple(line.rstrip().split()) for line in open(args.infile, 'r')]
     statement_1 = 'SELECT * FROM id_table WHERE {}=?'.format(args.identifier)
     statement_2 = 'SELECT associations ' \
                   + 'FROM gene_disease_associations ' \
                   + 'WHERE id=?'
+    if args.go:
+        go_file = str(outdir/Path(args.infile).stem) + '_{}.txt'.format(args.go)
+        statement_3 = 'SELECT go_ids FROM {} WHERE id=?'. format(args.go)
     for gene in genes:
+        # Check
         cur.execute(statement_1, gene)
         hits.append(cur.fetchone())
         if hits[-1] == None:
@@ -99,7 +117,7 @@ if args.infile:  # If argument [-i <input_file>] is specified.
     if misses:
         print('No associations were found for {}.'.format(
               ''.join(misses).strip(", ")))
-    with open(association_file, 'w') as out_file:
+    with open(association_file, 'w') as out_association:
         for hit in hits:
             if hit != None:
                 cur.execute(statement_2, tuple(hit[0].split()))
@@ -108,8 +126,17 @@ if args.infile:  # If argument [-i <input_file>] is specified.
                               '\n' + hit[format_index[args.identifier]] + '\t'
                               ),
                       sep='\t',
-                      file=out_file
+                      file=out_association
                       )
+                if args.go:
+                    cur.execute(statement_3, tuple(hit[0].split()))
+                    print(hit[format_index[args.identifier]],
+                          ''.join(cur.fetchone()).replace('|',
+                                  '\n' + hit[format_index[args.identifier]] + '\t'
+                                  ),
+                          sep='\t',
+                          file=open(go_file, 'w')
+                          )
 
 if args.search_term:  # If argument [-s "term"] is specified.
     # Uses the specified "term" to perform a search of the
