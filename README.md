@@ -86,7 +86,7 @@ Testing can be done by utilizing the files contained within /data/test_in/. Thes
   * [human.name_2_string.tsv](https://string-db.org/mapping_files/STRING_display_names/)
   * [human.uniprot_2_string.2018.tsv](https://string-db.org/mapping_files/uniprot/)
 
-The database source files were trimmed to limit the scope and size, and enable upload to GitHub. They were reduced by first limiting the *curated_gene_disease_associations.tsv* by only including genes which were associated with inflammation. This was then further trimmed by matching the leftover IDs with those of the other source files.
+The database source files were trimmed to limit the scope and size, and enable upload to GitHub. They were reduced by first limiting the *curated_gene_disease_associations.tsv* by only including genes which were associated with inflammation. This was then further trimmed by matching the leftover IDs with those of the other source files. These files can be found within /data/db_table_data/.
 
 ## Author(s)
 
