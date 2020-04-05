@@ -1,0 +1,28 @@
+1947	Craniosynostosis
+1947	Orbital separation excessive
+1947	Inflammation
+1947	Obesity
+1947	Acrocephaly
+1947	Craniofrontonasal dysplasia
+1947	Brachycephaly
+1947	Scaphycephaly
+1947	Trigonocephaly
+1947	Synostotic Posterior Plagiocephaly
+1947	Metopic synostosis
+1947	Frontonasal dysplasia
+1947	Synostotic Anterior Plagiocephaly
+1947	Intellectual Disability
+8942	Inflammation
+8942	Liver Cirrhosis, Experimental
+8942	Hydroxykynureninuria
+8942	Degenerative Diseases, Central Nervous System
+8942	Neurodegenerative Disorders
+8942	Degenerative Diseases, Spinal Cord
+8942	Major Depressive Disorder
+8942	Cakut
+9948	Osteoporosis, Age-Related
+9948	Inflammation
+9948	Osteoporosis
+9948	Osteoporosis, Senile
+9948	Thrombocytopenia
+9948	Post-Traumatic Osteoporosis

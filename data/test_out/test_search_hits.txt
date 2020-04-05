@@ -1,0 +1,137 @@
+ABCB1	Congenital Heart Defects
+ADIPOQ	Heart failure
+ADIPOQ	Congestive heart failure
+ADIPOQ	Left-Sided Heart Failure
+ADIPOQ	Heart Failure, Right-Sided
+ADIPOQ	Heart Decompensation
+AGT	Heart Diseases
+AGT	Heart failure
+AGT	Congestive heart failure
+AGT	Left-Sided Heart Failure
+AGT	Heart Failure, Right-Sided
+AGT	Heart Decompensation
+AHR	Congenital Heart Defects
+BDNF	Hearing Loss, Extreme
+BDNF	Complete Hearing Loss
+CCL2	Heart valve disease
+COL2A1	Sensorineural Hearing Loss (disorder)
+COL2A1	Sensory hearing loss
+CRP	Heart Diseases
+CRP	Heart failure
+CRP	Congestive heart failure
+CRP	Left-Sided Heart Failure
+CRP	Heart Failure, Right-Sided
+CRP	Heart Decompensation
+CSF2	Heart failure
+CSF2	Congestive heart failure
+CSF2	Left-Sided Heart Failure
+CSF2	Heart Failure, Right-Sided
+CSF2	Heart Decompensation
+CSF3	Heart Diseases
+CSF3	Heart failure
+CSF3	Congestive heart failure
+CSF3	Left-Sided Heart Failure
+CSF3	Heart Failure, Right-Sided
+CSF3	Heart Decompensation
+CXCL2	Heart failure
+CXCL2	Congestive heart failure
+CXCL2	Left-Sided Heart Failure
+CXCL2	Heart Failure, Right-Sided
+CXCL2	Heart Decompensation
+EDN1	Congenital Heart Defects
+EDN1	Heart failure
+EDN1	Congestive heart failure
+EDN1	Left-Sided Heart Failure
+EDN1	Heart Failure, Right-Sided
+EDN1	Heart Decompensation
+EPO	Heart Diseases
+HMOX1	Heart failure
+HMOX1	Congestive heart failure
+HMOX1	Left-Sided Heart Failure
+HMOX1	Heart Failure, Right-Sided
+HMOX1	Heart Decompensation
+IFNG	Heart failure
+IFNG	Congestive heart failure
+IFNG	Left-Sided Heart Failure
+IFNG	Heart Failure, Right-Sided
+IFNG	Heart Decompensation
+IL18	Heart valve disease
+IL1B	Heart failure
+IL1B	Congestive heart failure
+IL1B	Heart valve disease
+IL1B	Left-Sided Heart Failure
+IL1B	Heart Failure, Right-Sided
+IL1B	Heart Decompensation
+IL6	Heart failure
+IL6	Congestive heart failure
+IL6	Left-Sided Heart Failure
+IL6	Heart Failure, Right-Sided
+IL6	Heart Decompensation
+ITGB2	Heart valve disease
+JAK2	Heart valve disease
+LCN2	Heart valve disease
+MPO	Conduction disorder of the heart
+MTHFR	Coronary heart disease
+MTHFR	Hearing Loss, Sudden
+MTHFR	Congenital Heart Defects
+NOS2	Heart failure
+NOS2	Congestive heart failure
+NOS2	Left-Sided Heart Failure
+NOS2	Heart Failure, Right-Sided
+NOS2	Heart Decompensation
+NPPB	Congenital Heart Defects
+NPPB	Heart Diseases
+NPPB	Heart failure
+NPPB	Congestive heart failure
+NPPB	Left-Sided Heart Failure
+NPPB	Heart Failure, Right-Sided
+NPPB	Heart Decompensation
+POMC	Heart failure
+POMC	Congestive heart failure
+POMC	Left-Sided Heart Failure
+POMC	Heart Failure, Right-Sided
+POMC	Heart Decompensation
+PPARG	Heart failure
+PPARG	Congestive heart failure
+PPARG	Left-Sided Heart Failure
+PPARG	Heart Failure, Right-Sided
+PPARG	Heart Decompensation
+PTGS2	Heart failure
+PTGS2	Congestive heart failure
+PTGS2	Left-Sided Heart Failure
+PTGS2	Heart Failure, Right-Sided
+PTGS2	Heart Decompensation
+SIRT1	Heart Diseases
+SIRT1	Heart failure
+SIRT1	Congestive heart failure
+SIRT1	Left-Sided Heart Failure
+SIRT1	Heart Failure, Right-Sided
+SIRT1	Heart Decompensation
+SOD1	Heart failure
+SOD1	Congestive heart failure
+SOD1	Left-Sided Heart Failure
+SOD1	Heart Failure, Right-Sided
+SOD1	hearing impairment
+SOD1	Heart Decompensation
+SPP1	Heart Diseases
+SPP1	Heart valve disease
+TIMP1	Heart Diseases
+TIMP1	Heart valve disease
+TLR4	hearing impairment
+TNF	Heart failure
+TNF	Congestive heart failure
+TNF	Left-Sided Heart Failure
+TNF	Heart Failure, Right-Sided
+TNF	Heart Decompensation
+TNFRSF1A	Heart failure
+TNFRSF1A	Congestive heart failure
+TNFRSF1A	Left-Sided Heart Failure
+TNFRSF1A	Heart Failure, Right-Sided
+TNFRSF1A	Heart Decompensation
+VEGFA	Congenital Heart Defects
+VEGFA	Heart Diseases
+VEGFA	Heart failure
+VEGFA	Congestive heart failure
+VEGFA	Left-Sided Heart Failure
+VEGFA	Heart Failure, Right-Sided
+VEGFA	Heart Decompensation
