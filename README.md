@@ -70,7 +70,7 @@ Test basic functionality.
 
 ### Example 2
 
-Test GO term function, where domain type is specified with [-g \<ontology_domain\>]. See [-h] for alternatives.
+Test GO term function, where domain type is specified with [-g \<ontology_domain\>]. See [-h] for alternatives. By default this generates the regular gene-disease association output as well, but this can be silenced using [-silence_associations].
 
 ```
 ~/path/to/scr/gDADs -i ~/path/to/data/test_in/deg_symbol.txt -g "go_process"
