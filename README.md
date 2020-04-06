@@ -62,17 +62,23 @@ Testing can be done by utilizing the files contained within /data/test_in/. Thes
 
 ### Example 1
 
+Test basic functionality.
+
 ```
 ~/path/to/scr/gDADs -i ~/path/to/data/test_in/deg_entrez.txt -I entrez_id
 ```
 
 ### Example 2
 
+Test GO term function, where domain type is specified with [-g \<ontology_domain\>]. See [-h] for alternatives.
+
 ```
 ~/path/to/scr/gDADs -i ~/path/to/data/test_in/deg_symbol.txt -g "go_process"
 ```
 
 ### Example 3
+
+Test search function.
 
 ```
 ~/path/to/scr/gDADs -s "hear"
