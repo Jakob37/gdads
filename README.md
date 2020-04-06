@@ -8,15 +8,15 @@ To reference gDADs see the following [faux article](https://drive.google.com/fil
 
 These instructions will get you a copy of the software, and associated files, on your local machine for testing purposes (see section **Running tests**).
 
-**Disclaimer:** gDADs was developed on a Linux system (Ubuntu 18.04.4 LTS) and should preferably be run on a Linux distribution of similar architecture. It might work on macOS, but is not compatible with Windows (as of version 1.0).
+**Disclaimer:** gDADs was developed on a Linux system (Ubuntu 18.04.4 LTS) and should preferably be run on a Linux distribution of similar architecture. It might work on macOS, but is not compatible with Windows (as of version 1.0.1).
 
 ### Prerequisites
 
 *Regrettably, no Anaconda environment file can be supplied at the moment, due to local update issues.*
 
-The command-line executable was written in Python version 3.6.9, and only uses standard modules in the current iteration (version 1.0).
+The command-line executable was written in Python version 3.6.9, and only uses standard modules in the current iteration (version 1.0.1).
 
-It was intended for [GOATOOLS](https://github.com/tanghaibao/goatools) to be implemented in the software, but this fell outside the scope of the project. Instead, a rudimentary function was added to gDADs version 1.0, tested in subsection **Running tests**.
+It was intended for [GOATOOLS](https://github.com/tanghaibao/goatools) to be implemented in the software, but this fell outside the scope of the project. Instead, a rudimentary function was added to gDADs version 1.0.1, tested in subsection **Running tests**.
 
 ### Installation
 
