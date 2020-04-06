@@ -67,6 +67,14 @@ parser.add_argument(
                          'containing <search_term>, and output associated' +
                          ' genes to <search_term>_associations.tab'
                     )
+parser.add_argument(
+                    '--silence_association',
+                    dest='silent',
+                    action='store_true',
+                    help='supress standard output, should be specified if ' +
+                         'using [-g <ontology_domain>] if only output from' +
+                         ' this option is required'
+                    )
 args = parser.parse_args()
 
 
@@ -124,30 +132,38 @@ if args.infile:  # If argument [-i <input_file>] is specified.
         # Inform user on genes that weren't found in the database.
         print('No associations were found for {}.'.format(
               ''.join(misses).strip(", ")))
-    with open(association_file, 'w') as out_association:
-        # Iterate over list of calls made to database, and write hits to
-        # the output file.
-        for hit in hits:
-            if hit != None:  # Ignores gene IDs not in the database.
-                # Print the required output to the assigned file, after
-                # making the relevant secondary database check.
-                cur.execute(statement_2, tuple(hit[0].split()))
-                print(hit[format_index[args.identifier]],
-                      ''.join(cur.fetchone()).replace('|',
-                              '\n' + hit[format_index[args.identifier]] + '\t'
-                              ),
-                      sep='\t',
-                      file=out_association
-                      )
-                if args.go:  # Only executes if [-g] was specified.
-                    # Writes the requested ontology domain GO terms.
+    if args.silent != True:  # Skipped if [--silence_association] is
+                             # specified.
+        with open(association_file, 'w') as out_association:
+            # Iterate over list of calls made to database, and write hits to
+            # the output file.
+            for hit in hits:
+                if hit != None:  # Ignores gene IDs not in the database.
+                    # Print the required output to the assigned file, after
+                    # making the relevant secondary database check.
+                    cur.execute(statement_2, tuple(hit[0].split()))
+                    print(hit[format_index[args.identifier]],
+                          ''.join(cur.fetchone()).replace('|',
+                                '\n' + hit[format_index[args.identifier]] + '\t'
+                                ),
+                          sep='\t',
+                          file=out_association
+                          )
+
+    if args.go:  # Only executes if [-g] was specified.
+        # Writes the requested ontology domain GO terms.
+        with open(go_file, 'w') as out_go:
+            for hit in hits:
+                if hit != None:  # Ignores gene IDs not in the database.
+                    # Print the required output to the assigned file, after
+                    # making the relevant secondary database check.
                     cur.execute(statement_3, tuple(hit[0].split()))
                     print(hit[format_index[args.identifier]],
                           ''.join(cur.fetchone()).replace('|',
-                                  '\n' + hit[format_index[args.identifier]] + '\t'
-                                  ),
+                                '\n' + hit[format_index[args.identifier]] + '\t'
+                                ),
                           sep='\t',
-                          file=open(go_file, 'w')
+                          file=out_go
                           )
 
 if args.search_term:  # If argument [-s "term"] is specified.
